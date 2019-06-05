@@ -1,0 +1,20 @@
+{
+  "name": "release-based-workflow",
+  "version": "1.0.1",
+  "description": "Alien Invasion ============== This is the sample game that is built in the first three Chapter of mobile HTML5 Game Development.",
+  "main": "engine.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "PACKAGE=formation-react node ./sripts/release.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/accbjt/release-based-workflow.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/accbjt/release-based-workflow/issues"
+  },
+  "homepage": "https://github.com/accbjt/release-based-workflow#readme"
+}
