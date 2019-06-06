@@ -1,17 +1,51 @@
 const version = require('../package.json').version;
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
+const fetch = require('node-fetch');
 
 async function createTag() {
-  const setTag = await exec(`git tag v${version}-${process.env.PACKAGE}`);
+  try {
+    const setTag = await exec(`git tag v${version}-${process.env.PACKAGE}`);
+    console.log('stdout:', setTag.stdout);
+  } catch (err) {
+    console.log(err.message, `\nThis is most likely because you didn't bump your version number.`);
+    return;
+  }
 
-  console.log('stdout:', setTag.stdout);
-  console.log('stderr:', setTag.stderr);
+  try {
+    const pushTag = await exec('git push origin --tags');
+    console.log('stdout:', pushTag.stdout);
+  } catch (err) {
+    console.log(err.message);
+    return;
+  }
+debugger
+  try {
+    const payload = {
+      tag_name: `v${version}-formation-react`,
+      name: `v${version}`,
+      body: `Formation react release version v${version}`,
+      draft: false,
+      prerelease: false,
+    }
 
-  const pushTag = await exec('git push origin --tags');
+    const response = await fetch(
+      `https://api.github.com/repos/accbjt/release-based-workflow/releases?access_token=${process.env.GITHUB_API_KEY}`,
+      {
+        method: 'post',
+        body: JSON.stringify(payload)
+      }
+    );
 
-  console.log('stdout:' pushTag.stdout);
-  console.log('stdout:' pushTag.stderr);
+    const responseJson = await response.json();
+
+    debugger
+  } catch (err) {
+    debugger
+    console.log(err.message);
+    return;
+  }
+  
 }
 
 createTag();

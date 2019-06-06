@@ -5,7 +5,7 @@
   "main": "engine.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "release": "PACKAGE=formation-react node ./sripts/release.js"
+    "release": "PACKAGE=formation-react node --inspect-brk ./sripts/release.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/accbjt/release-based-workflow/issues"
   },
-  "homepage": "https://github.com/accbjt/release-based-workflow#readme"
+  "homepage": "https://github.com/accbjt/release-based-workflow#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "babel-preset-es2015": "^6.24.1"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
 }
