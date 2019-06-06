@@ -1,6 +1,6 @@
 {
   "name": "release-based-workflow",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Alien Invasion ============== This is the sample game that is built in the first three Chapter of mobile HTML5 Game Development.",
   "main": "engine.js",
   "scripts": {
