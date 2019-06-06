@@ -6,7 +6,7 @@ const fetch = require('node-fetch');
 async function createTag() {
   try {
     const setTag = await exec(`git tag v${version}-${process.env.PACKAGE}`);
-    debugger
+
     console.log('stdout:', setTag.stdout);
   } catch (err) {
     console.log(err.message, `\nThis is most likely because you didn't bump your version number.`);
@@ -39,7 +39,7 @@ async function createTag() {
     );
 
     const responseJson = await response.json();
-    console.log(`v${version}-formation-react release has been created. ${response.url}`);
+    console.log(`v${version}-formation-react release has been created.\n${responseJson.url}`);
   } catch (err) {
     debugger
     console.log(err.message);
