@@ -23,7 +23,7 @@ async function createTag() {
   
   try {
     const payload = {
-      tag_name: `v${version}-formation-react`,
+      tag_name: `v${version}-formation`,
       name: `v${version}`,
       body: `Formation react release version v${version}`,
       draft: false,
@@ -39,7 +39,7 @@ async function createTag() {
     );
 
     const responseJson = await response.json();
-    console.log(`v${version}-formation-react release has been created.\n${responseJson.url}`);
+    console.log(`v${version}-formation-react release has been created.\n${responseJson.html_url}`);
   } catch (err) {
     debugger
     console.log(err.message);
